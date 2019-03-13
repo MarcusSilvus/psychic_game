@@ -22,25 +22,26 @@ document.onkeyup = function (guess) {
     var userGuess = guess.key;
     guessed.push(userGuess);
     console.log(userGuess);
-
+    //defines what happens if the user guesses the correct key
     if (userGuess == random) {
-        wins++;
-        remaining = 9;
-        guessed = [];
-        random = alpha[Math.floor(Math.random() * alpha.length)];
+        wins++; //win counter up by one
+        remaining = 9;  // resets the number of turns
+        guessed = [];  //resets the letters guessed
+        random = alpha[Math.floor(Math.random() * alpha.length)]; //randomly selects another letter
         console.log("WINNER " + random);
     }
 
-
-    if (userGuess !== random) {
-        remaining--;
+    //defines what happens if the user guesses incorrectly
+    if (userGuess !== random) { 
+        remaining--; //remaining guesses goes down by one
     }
 
+    //defines what happens if the user guesses wrong nine times
     if (remaining < 1) {
-        losses++;
-        remaining = 9;
-        guessed = [];
-        random = alpha[Math.floor(Math.random() * alpha.length)];
+        losses++; //loss counter goes up by one
+        remaining = 9; // resets the number of turns
+        guessed = []; //resets the letters guessed
+        random = alpha[Math.floor(Math.random() * alpha.length)]; //randomly selects another letter
         console.log("LOSER " + random);
     }
 
